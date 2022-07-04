@@ -16,9 +16,8 @@ import reactor.core.publisher.Mono;
 public class AggregateController {
     private final ProductAggregatorService aggregatorService;
 
-
     @GetMapping("/product/{id}")
-    public Mono<ResponseEntity<ProductAggregator>> aggregare(@PathVariable Integer id){
+    public Mono<ResponseEntity<ProductAggregator>> aggregare(@PathVariable Integer id) {
         return aggregatorService.aggregate(id)
             .map(productAggregator -> ResponseEntity.ok().body(productAggregator))
             .defaultIfEmpty(ResponseEntity.notFound().build());

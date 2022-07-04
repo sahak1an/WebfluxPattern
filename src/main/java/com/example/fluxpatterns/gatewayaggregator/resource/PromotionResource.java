@@ -1,18 +1,20 @@
 package com.example.fluxpatterns.gatewayaggregator.resource;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public final class PromotionResource {
-    private final Integer id;
-    private final String type;
-    private final double disCount;
-    private final LocalDate endDate;
+    public static final PromotionResource EMPTY = new PromotionResource();
+    private Integer id;
+    private String type;
+    private double disCount;
+    private LocalDate endDate;
 }

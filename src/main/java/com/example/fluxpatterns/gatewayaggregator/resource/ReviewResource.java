@@ -1,17 +1,18 @@
 package com.example.fluxpatterns.gatewayaggregator.resource;
 
-import java.util.Objects;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public final class ReviewResource {
-    private final int id;
-    private final String user;
-    private final int rating;
-    private final String comment;
+    private static final ReviewResource EMPTY = new ReviewResource();
+    private int id;
+    private String user;
+    private int rating;
+    private String comment;
 }

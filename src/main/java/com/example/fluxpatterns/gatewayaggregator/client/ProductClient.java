@@ -1,5 +1,7 @@
 package com.example.fluxpatterns.gatewayaggregator.client;
 
+import static com.example.fluxpatterns.gatewayaggregator.resource.ProductResource.EMPTY;
+
 import com.example.fluxpatterns.gatewayaggregator.resource.ProductResource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,10 +15,12 @@ public class ProductClient {
     public ProductClient(@Value("${s0.url.product}") String baseUrl) {
         webClient = WebClient.builder().baseUrl(baseUrl).build();
     }
-    
-    public Mono<ProductResource> getById(int id){
-       return webClient.get()
-            .uri("{id}",id)
-            .exchangeToMono(clientResponse -> clientResponse.bodyToMono(ProductResource.class));
+
+    public Mono<ProductResource> getById(int id) {
+        return webClient.get()
+            .uri("{id}", id)
+            .exchangeToMono(clientResponse -> clientResponse.bodyToMono(ProductResource.class))
+            .switchIfEmpty(Mono.just(EMPTY))
+            .onErrorResume(e -> Mono.error(new RuntimeException()));
     }
 }

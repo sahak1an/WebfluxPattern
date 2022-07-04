@@ -1,19 +1,20 @@
 package com.example.fluxpatterns.gatewayaggregator.resource;
 
 import java.util.List;
-import java.util.Objects;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public final class ProductAggregator {
-    private final int id;
-    private final String type;
-    private final String description;
-    private final Price price;
-    private final List<ReviewResource> reviews;
+    private int id;
+    private String type;
+    private String description;
+    private Price price;
+    private List<ReviewResource> reviews;
 }

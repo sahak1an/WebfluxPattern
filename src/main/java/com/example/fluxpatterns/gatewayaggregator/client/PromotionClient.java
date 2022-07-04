@@ -1,6 +1,7 @@
 package com.example.fluxpatterns.gatewayaggregator.client;
 
-import com.example.fluxpatterns.gatewayaggregator.resource.ProductResource;
+import static com.example.fluxpatterns.gatewayaggregator.resource.PromotionResource.EMPTY;
+
 import com.example.fluxpatterns.gatewayaggregator.resource.PromotionResource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,11 @@ public class PromotionClient {
         webClient = WebClient.builder().baseUrl(baseUrl).build();
     }
 
-    public Mono<PromotionResource> getById(int id){
+    public Mono<PromotionResource> getById(int id) {
         return webClient.get()
-            .uri("{id}",id)
-            .exchangeToMono(clientResponse -> clientResponse.bodyToMono(PromotionResource.class));
+            .uri("{id}", id)
+            .exchangeToMono(clientResponse -> clientResponse.bodyToMono(PromotionResource.class))
+            .switchIfEmpty(Mono.just(EMPTY))
+            .onErrorResume(e -> Mono.error(new RuntimeException()));
     }
 }
