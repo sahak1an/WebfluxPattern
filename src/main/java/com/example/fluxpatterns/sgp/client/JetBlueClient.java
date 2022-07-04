@@ -8,11 +8,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class DeltaClient {
-    private static final String TYPE = "Delta";
+public class JetBlueClient {
+    private static final String JETBLUE = "JETBLUE";
     private final WebClient webClient;
 
-    public DeltaClient(@Value("${delta.service}") String baseUrl) {
+    public JetBlueClient(@Value("${jet.service}") String baseUrl) {
         this.webClient = WebClient.create(baseUrl);
     }
 
@@ -20,7 +20,7 @@ public class DeltaClient {
         return webClient.get()
             .uri("{from}/{to}", from, to)
             .exchangeToFlux(clientResponse -> clientResponse.bodyToFlux(FlightResult.class))
-            .doOnNext(result -> result.toBuilder().airLine(TYPE).build())
+            .doOnNext(result -> result.toBuilder().airLine(JETBLUE).build())
             .onErrorResume(throwable -> Mono.empty());
     }
 }
