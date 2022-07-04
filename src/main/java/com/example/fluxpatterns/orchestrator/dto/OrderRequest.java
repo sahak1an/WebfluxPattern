@@ -10,9 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "create")
 public class OrderRequest {
-
     private Integer userId;
     private Integer productId;
     private Integer quantity;
-
 }

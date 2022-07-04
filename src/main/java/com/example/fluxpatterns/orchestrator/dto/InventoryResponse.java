@@ -10,10 +10,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "create")
 public class InventoryResponse {
-
     private Integer productId;
     private Integer quantity;
     private Integer remainingQuantity;
     private Status status;
-
 }

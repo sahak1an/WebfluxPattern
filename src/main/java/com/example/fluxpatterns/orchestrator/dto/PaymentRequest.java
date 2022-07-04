@@ -12,9 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "create")
 public class PaymentRequest {
-
     private Integer userId;
     private Integer amount;
     private UUID orderId;
-
 }

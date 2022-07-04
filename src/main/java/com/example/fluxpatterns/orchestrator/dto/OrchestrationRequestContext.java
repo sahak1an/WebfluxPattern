@@ -8,7 +8,6 @@ import java.util.UUID;
 @Data
 @ToString
 public class OrchestrationRequestContext {
-
     private final UUID orderId = UUID.randomUUID();
     private OrderRequest orderRequest;
     private Integer productPrice;
@@ -19,9 +18,7 @@ public class OrchestrationRequestContext {
     private ShippingRequest shippingRequest;
     private ShippingResponse shippingResponse;
     private Status status;
-
     public OrchestrationRequestContext(OrderRequest orderRequest){
         this.orderRequest = orderRequest;
     }
-
 }

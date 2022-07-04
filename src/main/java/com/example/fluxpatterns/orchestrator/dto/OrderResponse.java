@@ -12,12 +12,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "create")
 public class OrderResponse {
-
     private Integer userId;
     private Integer productId;
     private UUID orderId;
     private Status status;
     private Address shippingAddress;
     private String expectedDelivery;
-
 }

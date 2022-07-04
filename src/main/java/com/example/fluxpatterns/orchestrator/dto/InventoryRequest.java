@@ -12,9 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "create")
 public class InventoryRequest {
-
     private UUID orderId;
     private Integer productId;
     private Integer quantity;
-
 }
