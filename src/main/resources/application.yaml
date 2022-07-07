@@ -10,3 +10,13 @@ resilience4j.circuitbreaker:
       recordExceptions:
         - org.springframework.web.reactive.function.client.WebClientResponseException
         - java.util.concurrent.TimeoutException
+
+resilience4j:
+  ratelimiter:
+    instances:
+      calc-service:
+        limit-refresh-period: 20s
+        limit-for-period: 10
+        timeout-duration: 5s
+
+
